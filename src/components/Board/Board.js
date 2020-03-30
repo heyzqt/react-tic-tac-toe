@@ -7,24 +7,28 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null) //每个单元格可能有3种状态的值，X/0/null
+      squares: Array(9).fill(null), //每个单元格可能有3种状态的值，X/0/null
+      xIsNext: true //X是先手棋
     };
   }
 
   renderSquare(i) {
     return (
-      <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
     );
   }
 
   handleClick(i) {
-      const squares = this.state.squares.slice();
-      squares[i] = 'X';
-      this.setState({squares: squares})
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? "X": "0";
+    this.setState({ squares: squares, xIsNext: !this.state.xIsNext });
   }
 
   render() {
-    const status = "Next player: X";
+    const status = "Next player: " + (this.state.xIsNext ? 'X' : '0');
     return (
       <div>
         <div className="status">{status}</div>
