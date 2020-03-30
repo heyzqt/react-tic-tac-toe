@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Board from './components/Board/Board'
+import Game from './components/Game/Game'
 
 function App() {
   return (
     <div className="App">
-      <Board />
+      <Game />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
